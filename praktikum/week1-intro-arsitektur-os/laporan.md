@@ -104,9 +104,11 @@ Microkernel: Minix, QNX, macOS (bagian inti: XNU)
 Tuliskan secara singkat:
    - Apa bagian yang paling menantang minggu ini? 
 
-    Sejujurnya saya agak tersiksa dengan matkul satu ini karena saya emednengar dari kakak tingkat bahwa materi yang ada didalamnya bukan untuk mahasiswa semester awal.Dan saya juga agak stress dengan projek yang belum say pahami.Sering kena error,salah ketik kode,dll.
+      Sejujurnya saya agak tersiksa dengan matkul satu ini karena saya mendengar dari kakak tingkat bahwa materi yang ada didalamnya bukan untuk mahasiswa semester awal.Dan saya juga agak stress dengan projek yang belum say pahami.Sering kena error,salah ketik kode,dll.
+
 - Bagaimana cara anda mengatasinya?
-Saya sering berkonsultasi dengan teman dan ketika saya stress,saya lampiaskan ke game.
+
+   Saya sering berkonsultasi dengan teman dan ketika saya stress,saya lampiaskan ke game.
 
 
 ---
