@@ -161,7 +161,7 @@ Tuliskan secara singkat:
 - Apa bagian yang paling menantang minggu ini?  
    > Melawan kantuk ditengah guyuran materi yang seperti baru didengar.Begitu juga dalam hal tugas install linux karena laptop saya belum mumpuni/mampu untuk menginstallnya
 - Bagaimana cara Anda mengatasinya?  
-   Ada teman yang merekomendasikan menggunakan pengganti linux yang lebih ringan yaitu cloudshell.
+   > Ada teman yang merekomendasikan menggunakan pengganti linux yang lebih ringan yaitu cloudshell.
 ---
 
 **Credit:**  
