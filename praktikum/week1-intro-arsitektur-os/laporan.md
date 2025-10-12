@@ -57,7 +57,7 @@ dmesg | head
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
 
-![alt text](<screenshots/Screenshot (4).png>)
+![alt text](screenshots/Screenshots.png)
 ---
 
 ## Analisis
