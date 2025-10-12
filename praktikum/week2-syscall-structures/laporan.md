@@ -80,9 +80,9 @@ git push origin main
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+strace ls
+strace -e trace=open,read,write,close cat /etc/passwd
+dmesg | tail -n 10
 ```
 
 ---
@@ -96,69 +96,72 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-Percobaan ini juga menunjukkan bagaimana kernel mengelola akses ke sumber daya sistem dan memastikan keamanan serta stabilitas sistem. Dengan menggunakan perintah strace dan dmesg, kita dapat memantau system call dan log kernel untuk memahami bagaimana sistem operasi bekerja.
+- Jelaskan makna hasil percobaan.
 
-Hasil percobaan ini memberikan wawasan tentang:
+> strace adalah alat Linux untuk melacak panggilan sistem (system call) dan sinyal yang dijalankan program, berguna mendeteksi kesalahan atau memahami cara kerja aplikasi. Sementara ls berfungsi menampilkan daftar file dan folder di direktori. Dengan strace ls, kita bisa melihat bagaimana perintah ls berinteraksi dengan kernel selama proses eksekusi.
 
-1. Interaksi program-kernel
-2. Manajemen sumber daya sistem
-3. Keamanan dan stabilitas sistem
-4. Penggunaan system call dalam program
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
+> strace -e trace=open,read,write,close cat /etc/passwd digunakan untuk memantau bagaimana perintah cat berinteraksi dengan sistem saat membaca file /etc/passwd. Dengan opsi -e trace=..., kita hanya melihat empat aktivitas utama: membuka file (open), membaca isinya (read), menulis hasil ke layar (write), dan menutup file (close). Jadi, perintah ini membantu memahami langkah-langkah yang dilakukan cat ketika menampilkan isi file pengguna sistem.
 
-Percobaan Struktur System Call dan Kernel Interaction menunjukkan bahwa konsep sistem operasi tentang kernel, system call, dan arsitektur sistem operasi dapat diaplikasikan secara langsung dalam praktek. Hasil percobaan ini membuktikan bahwa:
+> dmesg | tail -n 10 berfungsi untuk melihat sepuluh pesan terbaru dari log kernel di sistem Linux. Perintah dmesg sendiri menampilkan catatan aktivitas sistem, seperti deteksi perangkat keras, driver, atau error. Tanda | menyalurkan hasilnya ke tail -n 10, yang hanya menampilkan sepuluh baris terakhir. Dengan begitu, kita bisa mengetahui aktivitas atau kejadian terbaru yang terjadi pada sistem secara cepat.
 
-1. Kernel berfungsi sebagai pengawas dan pengelola sumber daya sistem.
-2. System call memungkinkan program untuk meminta layanan kernel.
-3. Arsitektur sistem operasi yang terdiri dari mode pengguna dan mode kernel memungkinkan kontrol akses yang efektif.
 
-Dengan demikian, percobaan ini memberikan bukti empiris tentang bagaimana sistem operasi bekerja dan bagaimana komponen-komponennya berinteraksi.
+- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS). 
 
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+> Perintah dmesg | tail -n 10 memiliki kaitan langsung dengan konsep fungsi kernel, system call, dan arsitektur sistem operasi.
+> Kernel bertugas mengatur komunikasi antara perangkat keras dan perangkat lunak,serta mencatat berbagai aktivitas sistem ke dalam log yang bisa dilihat melalui dmesg.
+> Setiap entri log tersebut berasal dari hasil system call, seperti saat sistem mendeteksi perangkat baru,memuat driver, atau menangani kesalahan.
+>Dalam kerangka arsitektur OS, perintah ini menunjukkan bagaimana lapisan kernel bekerja di balik layar untuk menanggapi perintah dari user space, kemudian berinteraksi dengan perangkat keras agar sistem berjalan stabil dan responsif.
 
-Perbedaan antara Linux dan Windows dalam struktur sistem call dan kernel interaction adalah:
 
-1. Linux menggunakan system call POSIX dan kernel monolitik, membuatnya lebih fleksibel dan dapat disesuaikan.
-2. Windows menggunakan system call NT API dan kernel hibrid, membuatnya lebih fokus pada kemudahan penggunaan dan kompatibilitas.
+- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
 
-Perbedaan ini mempengaruhi kinerja, keamanan, dan fleksibilitas kedua sistem operasi.
+> Perbedaan hasil antara Linux dan Windows terletak pada cara sistem menampilkan dan mengelola log kernel atau pesan sistem.
 
+> Di Linux,perintah dmesg | tail -n 10 menampilkan langsung pesan dari kernel — seperti deteksi perangkat keras, proses driver,atau error sistem — karena Linux memberi akses terbuka ke kernel ring buffer.
+
+> Di Windows, tidak ada perintah dmesg. Log sistem dikelola oleh Event Viewer, dan informasinya disajikan dalam bentuk antarmuka grafis, bukan terminal.
+
+> Jadi, Linux lebih terbuka untuk pemantauan teknis, sedangkan Windows lebih terkontrol dan berbasis GUI.
 ---
 
 ## Kesimpulan
-Praktikum ini menunjukkan bagaimana system call digunakan oleh program untuk berinteraksi dengan kernel. Dengan menggunakan perintah strace, kita dapat memantau system call yang dilakukan oleh program, seperti open, read, write, dan close. Hasilnya membantu memahami cara kerja sistem operasi dalam mengelola sumber daya dan menangani permintaan dari program.
-
-Perintah dmesg digunakan untuk memantau log kernel, yang dapat membantu dalam debugging dan memahami kejadian sistem. Dengan demikian, praktikum ini memberikan wawasan tentang interaksi antara program dan kernel, serta cara memantau dan menganalisis system call.
+Melalui praktik tentang struktur syscall dan fungsi kernel,mahasiswa dapat memahami cara kerja sistem operasi dalam menghubungkan pengguna dengan perangkat keras.System call berperan sebagai perantara agar program di user space dapat meminta layanan dari kernel, seperti membaca atau menulis data.Sementara itu,kernel menjalankan permintaan tersebut secara efisien,mengatur sumber daya sistem, serta menjaga keamanan dan stabilitas.Dengan praktik ini,mahasiswa mampu melihat bagaimana proses inti sistem operasi berjalan secara terstruktur dan terkendali.
 
 ---
 
 ## Quiz
+
 1. Apa fungsi utama system call dalam sistem operasi?
 
-   Fungsi utama system call adalah memungkinkan program pengguna untuk berinteraksi dengan kernel sistem operasi, meminta layanan seperti manajemen proses, file, dan perangkat keras, sehingga memungkinkan akses terkendali dan aman ke sumber daya sistem.
+    >  Fungsi utama **system call** dalam sistem operasi adalah menjadi **penghubung antara program pengguna dan kernel**. Melalui mekanisme ini, aplikasi dapat meminta layanan dari sistem, seperti membaca atau menulis file, mengatur memori, membuat proses baru, atau berinteraksi dengan perangkat keras. Tanpa adanya *system call*, program tidak bisa langsung mengakses sumber daya sistem. Dengan demikian, *system call* memastikan proses komunikasi antara aplikasi dan kernel berjalan aman, teratur, serta efisien.
 
-2. Sebutkan 4 kategori system call yang umum digunakan.
 
-   Empat kategori system call yang umum digunakan adalah:
-- Manajemen Proses
-- Manajemen File
-- Manajemen Perangkat
-- Manajemen Memori 
+2. Sebutkan 4 kategori system call yang umum digunakan!!
+
+   >    Empat kategori system call yang umum digunakan adalah:
+
+   1.Manajemen Proses
+
+   2.Manajemen File
+
+      3.Manajemen Perangkat
+
+      4.Manajemen Memori 
 
 
 3. Mengapa system call tidak bisa dipanggil langsung oleh user program?
 
-   System call tidak bisa dipanggil langsung oleh user program karena sistem operasi berjalan dalam mode kernel yang memiliki privilege lebih tinggi daripada mode pengguna. System call diperlukan sebagai perantara untuk memastikan keamanan, stabilitas, dan kontrol akses ke sumber daya sistem. Dengan demikian, sistem operasi dapat mengelola sumber daya secara efektif dan mencegah kerusakan sistem.
+   >  User program tidak dapat memanggil system call secara langsung karena hal itu berkaitan dengan keamanan dan kestabilan sistem operasi.Kernel memiliki kendali penuh atas sumber daya dan perangkat keras,sehingga jika pengguna bisa mengaksesnya tanpa pembatasan,sistem bisa mengalami gangguan,kerusakan,atau kebocoran data.Oleh sebab itu,sistem operasi menyediakan antarmuka khusus yang memastikan setiap permintaan dari program pengguna diproses dan diverifikasi oleh kernel secara aman serta terkontrol.
+
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
 - Apa bagian yang paling menantang minggu ini?  
-Mendowload Linux 
+   > Melawan kantuk ditengah guyuran materi yang seperti baru didengar.Begitu juga dalam hal tugas install linux karena laptop saya belum mumpuni/mampu untuk menginstallnya
 - Bagaimana cara Anda mengatasinya?  
-Menggunakan Cloud Shell
+   Ada teman yang merekomendasikan menggunakan pengganti linux yang lebih ringan yaitu cloudshell.
 ---
 
 **Credit:**  
