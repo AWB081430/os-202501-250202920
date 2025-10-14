@@ -94,14 +94,6 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ![output text](screenshots/strace_1.png)
 
-**Eksperimen 2 – Menelusuri System Call File I/O**
-
-![alt text](screenshots/strace_2.png)
-
-**Eksperimen 2 – Menelusuri System Call File I/O**
-
-![alt text](screenshots/dmesg.png)
-
 **Tabel Observasi Hasil  `strace ls`**
 
 | No | System Call    | Keterangan                                                   |
@@ -116,6 +108,37 @@ Sertakan screenshot hasil percobaan atau diagram:
 | 8  | `write()`      | Menampilkan hasil pembacaan ke layar terminal (stdout).      |
 | 9  | `close()`      | Menutup file descriptor yang sudah tidak digunakan.          |
 | 10 | `exit_group()` | Mengakhiri proses program `ls` setelah selesai dieksekusi.   |
+
+
+
+**Eksperimen 2 – Menelusuri System Call File I/O**
+
+![alt text](screenshots/strace_2.png)
+
+** Tabel Obsservasi ``strace -e trace=open,read,write,close cat /etc/passwd``
+
+| No | Syscall                                                     | Keterangan                                                                |
+| -- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1  | **open("/etc/passwd", O_RDONLY)**                           | Program `cat` membuka file `/etc/passwd` dalam mode baca (read-only).     |
+| 2  | **read(3, "root:x:0:0:root:/root:/bin/bash\n...", 131072)** | File dibaca oleh `cat`, hasilnya berupa isi teks dari `/etc/passwd`.      |
+| 3  | **write(1, "root:x:0:0:root:/root:/bin/bash\n...", 4096)**  | Isi file ditulis ke *stdout* (layar terminal).                            |
+| 4  | **read(3, "", 131072)**                                     | Setelah seluruh isi file dibaca, `read` mengembalikan nilai kosong (EOF). |
+| 5  | **close(3)**                                                | File `/etc/passwd` ditutup setelah selesai dibaca.                        |
+| 6  | **close(1)**                                                | *stdout* ditutup ketika proses `cat` selesai.                             |
+
+
+
+**Eksperimen 3 – Menelusuri System Call File I/O**
+
+![alt text](screenshots/dmesg.png)
+
+Perbedaan antara output `dmesg | tail -n 10` dengan output yang biasa `dmesg | head`
+
+| No | Perintah               | Hasil yang Ditampilkan                             | Keterangan                                                                                                                                                    |
+| -- | ---------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1  | **dmesg | head**       | Menampilkan **10 baris awal** dari log kernel.     | Biasanya berisi **informasi awal saat sistem baru menyala**, seperti pendeteksian perangkat keras, inisialisasi driver, dan pesan booting pertama kali.       |
+| 2  | **dmesg | tail -n 10** | Menampilkan **10 baris terakhir** dari log kernel. | Biasanya berisi **pesan terbaru** dari sistem operasi, misalnya perangkat baru yang baru saja disambungkan, proses yang error, atau aktivitas kernel terkini. |
+
 
 
 ---
@@ -169,9 +192,11 @@ Melalui praktik tentang struktur syscall dan fungsi kernel,mahasiswa dapat memah
 
    2.Manajemen File
 
-      3.Manajemen Perangkat
+   3.Manajemen Perangkat
 
-      4.Manajemen Memori 
+   4.Pemeliharaan Informasi
+
+      
 
 
 3. Mengapa system call tidak bisa dipanggil langsung oleh user program?
