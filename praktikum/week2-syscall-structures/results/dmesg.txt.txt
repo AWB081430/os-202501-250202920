@@ -1,0 +1,11 @@
+maswab595@cloudshell:~$ sudo dmesg | tail -n 10
+[ 2276.822970] vethe71abde2: entered allmulticast mode
+[ 2276.829733] vethe71abde2: entered promiscuous mode
+[ 2276.835873] cni0: port 2(vethe71abde2) entered blocking state
+[ 2276.842088] cni0: port 2(vethe71abde2) entered forwarding state
+[ 2277.091519] EXT4-fs (sdb1): mounted filesystem b9f0e455-8c03-483b-a0d6-629a47561fb9 r/w with ordered data mode. Quota mode: none.
+[ 2278.304885] LoadPin: kernel-module pinning-excluded obj="/lib/modules/6.6.105+/kernel/net/ipv4/netfilter/iptable_nat.ko" pid=2490 cmdline="/sbin/modprobe -q -- iptable_nat"
+[ 2278.433915] LoadPin: kernel-module pinning-excluded obj="/lib/modules/6.6.105+/kernel/net/netlink/netlink_diag.ko" pid=2511 cmdline="/sbin/modprobe -q -- net-pf-16-proto-4-type-16"
+[ 2281.148764] LoadPin: kernel-module pinning-excluded obj="/lib/modules/6.6.105+/kernel/net/netfilter/ipset/ip_set.ko" pid=2798 cmdline="/sbin/modprobe -q -- ipt_set"
+[ 2281.171256] LoadPin: kernel-module pinning-excluded obj="/lib/modules/6.6.105+/kernel/net/netfilter/xt_set.ko" pid=2798 cmdline="/sbin/modprobe -q -- ipt_set"
+[ 2281.206994] LoadPin: 
