@@ -92,7 +92,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 
  **Eksperimen 1 – Analisis System Call**
 
-![alt text](screenshots/strace_1.png)
+![output text](screenshots/strace_1.png)
 
 **Eksperimen 2 – Menelusuri System Call File I/O**
 
