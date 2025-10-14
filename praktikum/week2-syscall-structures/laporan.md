@@ -90,9 +90,34 @@ dmesg | tail -n 10
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
 
+ **Eksperimen 1 – Analisis System Call**
+
 ![alt text](screenshots/strace_1.png)
+
+**Eksperimen 2 – Menelusuri System Call File I/O**
+
 ![alt text](screenshots/strace_2.png)
+
+**Eksperimen 2 – Menelusuri System Call File I/O**
+
 ![alt text](screenshots/dmesg.png)
+
+**Tabel Observasi Hasil  `strace ls`**
+
+| No | System Call    | Keterangan                                                   |
+| -- | -------------- | ------------------------------------------------------------ |
+| 1  | `execve()`     | Menjalankan program `ls` dari shell.                         |
+| 2  | `brk()`        | Mengatur batas awal dan akhir memori heap proses.            |
+| 3  | `mmap()`       | Memetakan file atau library ke dalam ruang memori virtual.   |
+| 4  | `openat()`     | Membuka file atau direktori yang akan diakses oleh `ls`.     |
+| 5  | `read()`       | Membaca isi file atau direktori yang telah dibuka.           |
+| 6  | `getdents64()` | Mengambil daftar isi direktori (nama-nama file dan folder).  |
+| 7  | `fstat()`      | Mengambil informasi status file seperti ukuran dan jenisnya. |
+| 8  | `write()`      | Menampilkan hasil pembacaan ke layar terminal (stdout).      |
+| 9  | `close()`      | Menutup file descriptor yang sudah tidak digunakan.          |
+| 10 | `exit_group()` | Mengakhiri proses program `ls` setelah selesai dieksekusi.   |
+
+
 ---
 
 ## Analisis
