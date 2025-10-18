@@ -153,7 +153,9 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ![alt text](image-3.png)
 
-    a.Perintah `echo "Hello <NAME><NIM>" > percobaan.txt`
+
+  a.Perintah `echo "Hello <NAME><NIM>" > percobaan.txt`
+    
 
       Berarti membuat file baru bernama percobaan.txt dan menuliskan teks "Hello <NAME><NIM>" ke dalamnya.
       `echo`  digunakan untuk menampilkan teks ke terminal.
