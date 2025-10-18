@@ -44,7 +44,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    ```
    > Analisis bagaimana file dibuka, dibaca, dan ditutup oleh kernel.
 
-4. **Eksperimen 3 – Mode User vs Kernel**
+4. **Eksperimen 2 – Menelusuri System Call File I/O**
    Jalankan:
    ```bash
    dmesg | tail -n 10
