@@ -59,7 +59,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    chmod 600 percobaan.txt
    ls -l percobaan.txt
    ```
-   - Analisis perbedaan sebelum dan sesudah chmod.  
+   - Analisis perbedaan sebelum dan sesudah chmod.   
    - Ubah pemilik file (jika memiliki izin sudo):
    ```bash
    sudo chown root percobaan.txt
@@ -78,7 +78,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    ```bash
    git add .
    git commit -m "Minggu 3 - Linux File System & Permission"
-   git push origin main
+   git push origin main 
    ```
 
 ---
