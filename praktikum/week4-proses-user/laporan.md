@@ -87,7 +87,7 @@ pstree -p | head -20
 
 
 
-### Eksperimen 2-monitorin proses
+### Eksperimen 2-monitoring proses
 ![alt text](image-1.png)
 
 | **Kolom**   | **Keterangan / Nama Lengkap**      | **Fungsi / Makna**                                                                                        | **Contoh dari Output**                            |
@@ -107,7 +107,7 @@ pstree -p | head -20
 
 ### Eksperimen 3-kontrol proses
 
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 | No | Perintah yang Dijalankan | Tujuan                                      | Hasil Output                                            | **PID Proses `sleep`**                                                                                                                 | Keterangan                               |                                                                                                                  |
 | -- | ------------------------ | ------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -123,7 +123,7 @@ PID yang masih aktif: 483 (/bin/bash /google/scripts/onrun.sh sleep infinity mil
 
 
 ### Eksperimen 4-analisis hierarki proses
-![alt text](image-3.png)
+![alt text](image-2.png)
 
 #### Analisis Hierarki
 
