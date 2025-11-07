@@ -16,7 +16,7 @@ Mahasiswa akan melakukan simulasi dan perbandingan hasil perhitungan kedua algor
 
 ## B. Tujuan
 Setelah menyelesaikan tugas ini, mahasiswa mampu:
-1. Menghitung *waiting time* dan *turnaround time* untuk algoritma FCFS dan SJF.  
+1. Menghitung *waiting time* dan *turnaround time* untuk algoritma FCFS dan SJF.  Z
 2. Menyajikan hasil perhitungan dalam tabel yang rapi dan mudah dibaca.  
 3. Membandingkan performa FCFS dan SJF berdasarkan hasil analisis.  
 4. Menjelaskan kelebihan dan kekurangan masing-masing algoritma.  
