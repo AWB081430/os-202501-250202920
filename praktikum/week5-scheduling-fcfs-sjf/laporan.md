@@ -52,7 +52,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    - Hitung rata-rata Waiting Time dan Turnaround Time.  
    - Buat Gantt Chart sederhana:  
      ```
-     | P1 | P2 | P3 | P4 |
+     | P1 | P2 | P3 | P4 | P5 |
      0    6    14   21   24
      ```
 
