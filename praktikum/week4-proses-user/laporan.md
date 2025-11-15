@@ -127,6 +127,36 @@ PID yang masih aktif: 483 (/bin/bash /google/scripts/onrun.sh sleep infinity mil
 
 #### Analisis Hierarki
 
+Dari gambar terlihat struktur pohon proses seperti berikut (disederhanakan):
+
+
+ ├─ dockerd(244)
+
+ │   └─ containerd(280)
+
+ │       ├─  
+
+ │       ├─  
+
+ │       └─ ...
+
+ ├─ logger(25)
+
+ ├─ python(24)
+
+ └─ editor-proxy(283)
+ 
+      └─ runuser(515)
+           └─ sh(516)
+                └─ node(529)
+                     └─ node(1248)
+                          └─ cloudcode_cli(1726)
+                               ├─ [cloudcode_cli]
+                               ├─ [cloudcode_cli]
+                               └─ [cloudcode_cli]
+
+
+
 | **Elemen**                                                                      | **PID**  | **Keterangan / Peran**                                                                                                                                                                                                                            |
 | ------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `bash(1)`                                                                       | **1**    | Ini adalah **proses induk utama** (init) dalam lingkungan Cloud Shell. Biasanya, pada sistem Linux normal proses ini adalah **`systemd(1)`** atau **`init(1)`**, namun di Cloud Shell digantikan oleh **bash(1)** sebagai root shell environment. |
@@ -185,7 +215,7 @@ Berdasarkan hasil praktikum, dapat disimpulkan bahwa Linux memiliki sistem penge
                Perintah `kill` digunakan untuk menghentikan proses berdasarkan **nomor PID**.
                Sedangkan **`killall`** menghentikan **semua proses yang memiliki nama program yang sama**. Jadi, `kill` lebih spesifik ke satu proses tertentu, sementara `killall` lebih praktis jika ingin menutup beberapa proses sekaligus tanpa perlu tahu nomor PID-nya.
 
-3. Mengapa user `root` memiliki hak istimewa di sistem Linux? 
+3. Mengapa user `root` memiliki hak istimewa di sistem Linux?  
    **Jawaban:**  
          User **`root`** memiliki hak istimewa karena berperan sebagai **administrator utama** di Linux. Akun ini punya **akses penuh ke seluruh sistem**, termasuk mengubah konfigurasi, mengelola file penting, dan mengatur pengguna lain. Kewenangan ini dibutuhkan untuk memelihara sistem, tetapi harus digunakan dengan hati-hati agar tidak menimbulkan kerusakan atau masalah keamanan.
 
