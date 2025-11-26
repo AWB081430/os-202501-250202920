@@ -1,25 +1,38 @@
 
-# Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+# Laporan Praktikum Minggu 7
+Topik : Sinkronisasi Proses dan Masalah Deadlock  
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : Awwab Maftuhi
+- **NIM**   : 250202920  
+- **Kelas** : 1 IKRB
 
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Pada praktikum minggu ini, mahasiswa akan mempelajari **mekanisme sinkronisasi proses dan penanganan deadlock** dalam sistem operasi.  
+Tujuan utamanya adalah memahami bagaimana beberapa proses dapat berjalan secara bersamaan (concurrent) tanpa menyebabkan konflik data atau kebuntuan sumber daya (*deadlock*).
+
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Mengidentifikasi empat kondisi penyebab deadlock (*mutual exclusion, hold and wait, no preemption, circular wait*).  
+2. Menjelaskan mekanisme sinkronisasi menggunakan *semaphore* atau *monitor*.  
+3. Menganalisis dan memberikan solusi untuk kasus deadlock.  
+4. Berkolaborasi dalam tim untuk menyusun laporan analisis.  
+5. Menyajikan hasil studi kasus secara sistematis.
 
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+Berikut **dasar teori singkat** tentang **sinkronisasi proses & deadlock** :
+
+- **Sinkronisasi proses** memastikan beberapa proses berjalan teratur agar tidak terjadi konflik saat mengakses sumber daya bersama.
+- Teknik umum sinkronisasi: **mutex**, **semaphore**, dan **monitor**.
+- **Race condition** terjadi ketika hasil eksekusi bergantung pada urutan proses.
+- **Deadlock** adalah kondisi ketika proses saling menunggu sumber daya sehingga tidak ada yang dapat melanjutkan.
+- Deadlock terjadi jika memenuhi empat syarat: **mutual exclusion**, **hold and wait**, **no preemption**, dan **circular wait**.
+
 
 ---
 
